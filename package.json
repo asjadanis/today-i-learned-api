@@ -1,0 +1,49 @@
+{
+  "name": "today-i-learned-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon src/index.ts",
+    "start": "node dist/index.ts",
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.{js,ts,mjs,cjs}'",
+    "perttier:check": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --check",
+    "perttier:fix": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --write",
+    "prepare": "husky install",
+    "commit": "cz"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.8",
+    "express": "^4.18.2",
+    "lint-staged": "^13.2.3",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.46.0",
+    "husky": "^8.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
