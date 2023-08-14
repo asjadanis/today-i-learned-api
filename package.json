@@ -14,7 +14,16 @@
     "perttier:check": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --check",
     "perttier:fix": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --write",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "prisma-pull:dev": "dotenv -e .env.dev -- npx prisma db pull",
+    "prisma-pull:stage": "dotenv -e .env.stage -- npx prisma db pull",
+    "prisma-pull": "dotenv -e .env.prod -- npx prisma db pull",
+    "prisma-generate:dev": "dotenv -e .env.dev -- npx prisma generate",
+    "prisma-generate:stage": "dotenv -e .env.stage -- npx prisma generate",
+    "prisma-generate": "dotenv -e .env.prod -- npx prisma generate",
+    "prisma-push:dev": "dotenv -e .env.dev -- npx prisma db push",
+    "prisma-push:stage": "dotenv -e .env.stage -- npx prisma db push",
+    "prisma-push": "dotenv -e .env.prod -- npx prisma db push"
   },
   "lint-staged": {
     "src/**/*.{js,ts,mjs,cjs}": [
@@ -26,6 +35,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.1.1",
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.8",
     "dotenv": "^16.3.1",
