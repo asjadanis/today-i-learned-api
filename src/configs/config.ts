@@ -1,4 +1,4 @@
-import { Config, SantizedConfig } from "../types/config/config";
+import { Config, SantizedConfig } from "@/types/config/config.type";
 
 const santizeConfig = (config: Config, envFile: string): SantizedConfig => {
   for (const [key, value] of Object.entries(config)) {

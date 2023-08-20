@@ -1,6 +1,6 @@
 import path from "path";
 import dotenv from "dotenv";
-import { Config } from "../types/config/config";
+import { Config } from "@/types/config/config.type";
 
 dotenv.config({ path: path.resolve(__dirname, "../../.env.prod") });
 
