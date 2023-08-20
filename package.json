@@ -56,7 +56,8 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.46.0",
     "husky": "^8.0.3",
-    "prisma": "^5.1.1"
+    "prisma": "^5.1.1",
+    "tsconfig-paths": "^4.2.0"
   },
   "config": {
     "commitizen": {
