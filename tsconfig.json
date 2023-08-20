@@ -12,7 +12,19 @@
     "typeRoots": [
       "./node_modules/@types",
       "./src/types/extended-types/global.d.ts"
-    ]
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/utils/*": ["utils/*"],
+      "@/types/*": ["types/*"],
+      "@/routes/*": ["routes/*"],
+      "@/controllers/*": ["controllers/*"],
+      "@/models/*": ["models/*"],
+      "@/services/*": ["services/*"]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   },
   "include": ["./src/**/*"]
 }
