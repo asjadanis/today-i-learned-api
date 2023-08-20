@@ -2,6 +2,7 @@ import express from "express";
 import config from "./configs/config";
 import morgan from "morgan";
 import postRoutes from "@/routes/v1/post.route";
+import errorHandler from "middlewares/error";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/posts", postRoutes);
+app.use(errorHandler);
 
 const PORT = config.PORT || 3001;
 
