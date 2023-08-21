@@ -1,14 +1,27 @@
+import ApiError from "@/utils/ApiError";
+import logger from "@/utils/logger";
 import { NextFunction, Request, Response } from "express";
 
 const errorHandler = (
-  err: Error,
+  err: Error | ApiError,
   req: Request,
   res: Response,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) => {
-  console.log("Error: ", err);
-  res.status(500).json({ success: false, message: err.message });
+  let error = err as ApiError;
+
+  if (error instanceof Error) {
+    const statusCode = error instanceof ApiError ? error.statusCode : 500;
+    const message = error.message || "Something went wrong!!!";
+    error = new ApiError(message, statusCode);
+  }
+
+  logger.info("info", error);
+
+  res
+    .status(error.statusCode || 500)
+    .json({ success: false, message: err.message });
 };
 
 export default errorHandler;
