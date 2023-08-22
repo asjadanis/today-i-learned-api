@@ -1,8 +1,8 @@
 import express from "express";
 import config from "./configs/config";
 import morgan from "morgan";
-import postRoutes from "@/routes/v1/post.route";
 import errorHandler from "middlewares/error";
+import routes from "@/routes/v1";
 
 const app = express();
 
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v1/posts", postRoutes);
+app.use("/api/v1", routes);
 app.use(errorHandler);
 
 const PORT = config.PORT || 3001;
