@@ -17,7 +17,7 @@ const errorHandler = (
     error = new ApiError(message, statusCode);
   }
 
-  logger.info("info", error);
+  logger.error(error.message, error);
 
   res
     .status(error.statusCode || 500)
