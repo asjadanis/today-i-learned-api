@@ -3,11 +3,11 @@ import * as userController from "@/controllers/user.controller";
 
 const router = Router();
 
-router.route("/profile").get(userController.getUser);
+router.route("/profile").get(userController.getUserById);
 router.route("/").post(userController.createUser);
 router
   .route("/:id")
-  .get(userController.getUser)
+  .get(userController.getUserById)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 

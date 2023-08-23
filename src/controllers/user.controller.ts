@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import { getSignedJWT } from "@/utils/jwt";
 import * as userService from "@/services/user.service";
 
-const getUser = tryCatchWrapper(async (req: Request, res: Response) => {
+const getUserById = tryCatchWrapper(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const user = await userService.getUser(id);
-  res.status(200).json({ data: user });
+  const user = await userService.getUserById(id);
+  res.status(200).json({ success: true, data: { user } });
 });
 
 const createUser = tryCatchWrapper(async (req: Request, res: Response) => {
@@ -29,4 +29,4 @@ const deleteUser = tryCatchWrapper(async (req: Request, res: Response) => {
   res.status(200).json({ data: user });
 });
 
-export { getUser, createUser, updateUser, deleteUser };
+export { getUserById, createUser, updateUser, deleteUser };

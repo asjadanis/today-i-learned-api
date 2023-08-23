@@ -5,8 +5,11 @@ import ApiError from "@/utils/ApiError";
 
 const prisma = PrismaInstance.getInstance();
 
-const getUser = async (id: string) => {
-  return prisma.user.findUnique({ where: { id } });
+const getUserById = async (id: string) => {
+  return prisma.user.findUnique({
+    where: { id },
+    select: { email: true, username: true, password: false, id: true }
+  });
 };
 
 const createUser = async (user: User) => {
@@ -32,4 +35,4 @@ const deleteUser = async (id: string) => {
   return prisma.user.delete({ where: { id } });
 };
 
-export { getUser, createUser, updateUser, deleteUser };
+export { getUserById, createUser, updateUser, deleteUser };
