@@ -11,22 +11,24 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types/extended-types/global.d.ts"
+      "./src/types/extended-types/global.d.ts",
+      "./src/types/express/index.d.ts"
     ],
-    "baseUrl": "./src",
+    "baseUrl": "./",
+    "rootDir": "src",
     "paths": {
-      "@/utils/*": ["utils/*"],
-      "@/types/*": ["types/*"],
-      "@/routes/*": ["routes/*"],
-      "@/controllers/*": ["controllers/*"],
-      "@/models/*": ["models/*"],
-      "@/services/*": ["services/*"],
-      "@/middlewares/*": ["middlewares/*"],
-      "@/configs/*": ["configs/*"]
+      "@/utils/*": ["./src/utils/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/routes/*": ["./src/routes/*"],
+      "@/controllers/*": ["./src/controllers/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/middlewares/*": ["./src/middlewares/*"],
+      "@/configs/*": ["./src/configs/*"]
     }
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   },
-  "include": ["./src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.spec.ts"]
 }

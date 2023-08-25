@@ -1,7 +1,7 @@
 import express from "express";
-import config from "./configs/config";
+import config from "@/configs/config";
 import morgan from "morgan";
-import errorHandler from "middlewares/error";
+import errorHandler from "@/middlewares/error";
 import routes from "@/routes/v1";
 
 const app = express();

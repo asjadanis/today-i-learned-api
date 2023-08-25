@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import PrismaInstance from "db";
+import PrismaInstance from "../db";
 import bcrypt from "bcrypt";
 import ApiError from "@/utils/ApiError";
 

@@ -1,5 +1,5 @@
 import { Post } from "@prisma/client";
-import PrismaInstance from "db";
+import PrismaInstance from "../db";
 
 const prisma = PrismaInstance.getInstance();
 

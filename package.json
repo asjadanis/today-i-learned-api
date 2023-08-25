@@ -9,7 +9,7 @@
     "start:stage": "cross-env ENV=stage NODE_ENV=development nodemon src/index.ts",
     "start": "npm run clean && npm run build && cross-env ENV=production node dist/index.js",
     "clean": "rm -rf ./dist",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "lint": "eslint 'src/**/*.{js,ts,mjs,cjs}'",
     "perttier:check": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --check",
     "perttier:fix": "prettier 'src/**/*.{js,ts,mjs,cjs,json}' --write",
@@ -62,6 +62,7 @@
     "eslint": "^8.46.0",
     "husky": "^8.0.3",
     "prisma": "^5.1.1",
+    "tsc-alias": "^1.8.7",
     "tsconfig-paths": "^4.2.0"
   },
   "config": {
