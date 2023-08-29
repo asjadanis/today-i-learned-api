@@ -9,25 +9,21 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types/extended-types/global.d.ts",
-      "./src/types/express/index.d.ts"
-    ],
-    "baseUrl": "./",
-    "rootDir": "src",
+    "baseUrl": "./src",
     "paths": {
-      "@/utils/*": ["./src/utils/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/routes/*": ["./src/routes/*"],
-      "@/controllers/*": ["./src/controllers/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/middlewares/*": ["./src/middlewares/*"],
-      "@/configs/*": ["./src/configs/*"]
-    }
+      "@/utils/*": ["utils/*"],
+      "@/types/*": ["types/*"],
+      "@/routes/*": ["routes/*"],
+      "@/controllers/*": ["controllers/*"],
+      "@/services/*": ["services/*"],
+      "@/middlewares/*": ["middlewares/*"],
+      "@/configs/*": ["configs/*"]
+    },
+    "typeRoots": ["src/@types", "./node_modules/@types"],
   },
   "ts-node": {
-    "require": ["tsconfig-paths/register"]
+    "require": ["tsconfig-paths/register"],
+    "files": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.spec.ts"]
