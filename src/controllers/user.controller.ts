@@ -9,6 +9,12 @@ const getUserById = tryCatchWrapper(async (req: Request, res: Response) => {
   res.status(httpStatus.OK).json({ success: true, data: { user } });
 });
 
+const getLoggedInUser = tryCatchWrapper(async (req: Request, res: Response) => {
+  const { id } = req.user;
+  const user = await userService.getUserById(id);
+  res.status(httpStatus.OK).json({ success: true, data: { user } });
+});
+
 const updateUser = tryCatchWrapper(async (req: Request, res: Response) => {
   const { id } = req.params;
   const user = await userService.updateUser(id, req.body);
@@ -21,4 +27,4 @@ const deleteUser = tryCatchWrapper(async (req: Request, res: Response) => {
   res.status(httpStatus.OK).json({ data: user });
 });
 
-export { getUserById, updateUser, deleteUser };
+export { getUserById, updateUser, deleteUser, getLoggedInUser };
