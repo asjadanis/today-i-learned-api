@@ -12,10 +12,12 @@ const getUserById = async (id: string) => {
   });
 };
 
+const userExists = async (email: string) => {
+  return prisma.user.findUnique({ where: { email } });
+};
+
 const createUser = async (user: User) => {
-  const userAlreadyExists = await prisma.user.findUnique({
-    where: { email: user.email }
-  });
+  const userAlreadyExists = await userExists(user.email);
 
   if (userAlreadyExists) {
     throw new ApiError("User already exists", 409);
@@ -35,4 +37,4 @@ const deleteUser = async (id: string) => {
   return prisma.user.delete({ where: { id } });
 };
 
-export { getUserById, createUser, updateUser, deleteUser };
+export { getUserById, createUser, updateUser, deleteUser, userExists };
