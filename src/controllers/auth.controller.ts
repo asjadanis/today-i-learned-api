@@ -45,7 +45,7 @@ const loginUser = tryCatchWrapper(async (req: Request, res: Response) => {
 
   res
     .status(httpStatus.OK)
-    .json({ success: true, data: { userWithoutPassword, token } });
+    .json({ success: true, data: { user: userWithoutPassword, token } });
 });
 
 export { createUser, loginUser };
