@@ -1,0 +1,27 @@
+type HTTP_RESPONSE_CODE =
+  | 200
+  | 201
+  | 400
+  | 401
+  | 404
+  | 500
+  | 501
+  | 502
+  | 503
+  | 504;
+
+type HTTP_RESPONSE_STATUS =
+  | "OK"
+  | "CREATED"
+  | "BAD_REQUEST"
+  | "UNAUTHORIZED"
+  | "NOT_FOUND"
+  | "INTERNAL_SERVER_ERROR"
+  | "NOT_IMPLEMENTED"
+  | "BAD_GATEWAY"
+  | "SERVICE_UNAVAILABLE"
+  | "GATEWAY_TIMEOUT";
+
+export type HTTP_STATUS = {
+  [key in HTTP_RESPONSE_STATUS]: HTTP_RESPONSE_CODE;
+};
