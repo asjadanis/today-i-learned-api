@@ -1,0 +1,5 @@
+{
+  "ignore": ["**/*.d.ts"],
+  "ignoreBinaries": ["zip", "docker-compose"],
+  "ignoreDependencies": ["ts-node", "tsconfig-paths"]
+}
