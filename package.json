@@ -23,7 +23,8 @@
     "prisma-generate": "dotenv -e .env.prod -- npx prisma generate",
     "prisma-push:dev": "dotenv -e .env.dev -- npx prisma db push",
     "prisma-push:stage": "dotenv -e .env.stage -- npx prisma db push",
-    "prisma-push": "dotenv -e .env.prod -- npx prisma db push"
+    "prisma-push": "dotenv -e .env.prod -- npx prisma db push",
+    "knip": "knip"
   },
   "lint-staged": {
     "src/**/*.{js,ts,mjs,cjs}": [
@@ -62,6 +63,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.46.0",
     "husky": "^8.0.3",
+    "knip": "^2.20.2",
     "prisma": "^5.1.1",
     "tsc-alias": "^1.8.7",
     "tsconfig-paths": "^4.2.0"
