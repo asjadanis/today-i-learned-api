@@ -1,8 +1,7 @@
 import tryCatchWrapper from "@/utils/tryCatchWrapper";
 import { Request, Response } from "express";
-import { getSignedJWT } from "@/utils/jwt";
+import { comparePassword, getSignedJWT } from "@/utils/jwt";
 import * as userService from "@/services/user.service";
-import { compare } from "bcrypt";
 import ApiError from "@/utils/ApiError";
 import { User } from "@prisma/client";
 import httpStatus from "@/utils/httpStatus";
@@ -32,7 +31,7 @@ const loginUser = tryCatchWrapper(async (req: Request, res: Response) => {
     throw new ApiError("User not found", 404);
   }
 
-  const isMatch = await compare(password, user.password);
+  const isMatch = comparePassword(password, user.password);
 
   if (!isMatch) {
     throw new ApiError("Incorrect credentials", 401);
