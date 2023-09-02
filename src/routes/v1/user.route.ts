@@ -11,4 +11,6 @@ router
   .put(authMiddleware, userController.updateUser)
   .delete(authMiddleware, userController.deleteUser);
 
+router.route("/:id/posts").get(userController.getUserPosts);
+
 export default router;

@@ -27,4 +27,10 @@ const deleteUser = tryCatchWrapper(async (req: Request, res: Response) => {
   res.status(httpStatus.OK).json({ data: user });
 });
 
-export { getUserById, updateUser, deleteUser, getLoggedInUser };
+const getUserPosts = tryCatchWrapper(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const posts = await userService.getUserPosts(id);
+  res.status(httpStatus.OK).json({ data: posts });
+});
+
+export { getUserById, updateUser, deleteUser, getLoggedInUser, getUserPosts };

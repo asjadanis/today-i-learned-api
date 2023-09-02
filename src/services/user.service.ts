@@ -37,4 +37,15 @@ const deleteUser = async (id: string) => {
   return prisma.user.delete({ where: { id } });
 };
 
-export { getUserById, createUser, updateUser, deleteUser, userExists };
+const getUserPosts = async (id: string) => {
+  return prisma.user.findUnique({ where: { id } }).posts();
+};
+
+export {
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+  userExists,
+  getUserPosts
+};
