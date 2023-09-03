@@ -45,3 +45,7 @@ model Comment {
   parent    Comment?  @relation("replies", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   parentId  String?   @db.ObjectId
 }
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
