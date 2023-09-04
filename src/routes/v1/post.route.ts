@@ -25,9 +25,15 @@ const router = Router();
  *        type: string
  *        description: The id of the user who created the post
  *    example:
+ *      id: 231311231321
+ *      slug: hello-world
  *      title: "Hello World"
  *      body: "This is a post"
  *      authorId: 231311231321
+ *      createdAt: 2021-01-01T00:00:00.000Z
+ *      updatedAt: 2021-01-01T00:00:00.000Z
+ *      upvotes: 0
+ *      downvotes: 0
  *
  */
 
@@ -47,18 +53,65 @@ const router = Router();
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/Post'
+ *            type: object
+ *            properties:
+ *              title:
+ *                type: string
+ *                example: Hello World
+ *              body:
+ *                type: string
+ *                example: This is a post
+ *              authorId:
+ *                type: string
+ *                example: 231311231321
+ *              slug:
+ *                type: string
+ *                example: hello-world
+ *
  *    responses:
  *      201:
  *        description: The post was successfully created
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Post'
+ *              type: object
+ *              properties:
+ *               message:
+ *                type: string
+ *                example: success
+ *               data:
+ *                $ref: '#/components/schemas/Post'
  *      500:
  *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
  *      400:
  *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
+ *      401:
+ *        description: Unauthorized
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Unauthorized
+ *
  *  get:
  *   summary: Get all posts
  *   tags: [Posts]
@@ -70,6 +123,9 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
+ *              message:
+ *                type: string
+ *                example: success
  *              data:
  *                type: array
  *                items:
@@ -94,9 +150,34 @@ const router = Router();
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Post'
- *      404:
- *        description: The post was not found
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: success
+ *                data:
+ *                  $ref: '#/components/schemas/Post'
+ *
+ *      500:
+ *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
+ *      400:
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
  *
  *  put:
  *    summary: Update a post by id
@@ -113,18 +194,73 @@ const router = Router();
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/Post'
+ *            type: object
+ *            properties:
+ *              title:
+ *                type: string
+ *                example: Hello World
+ *              body:
+ *                type: string
+ *                example: This is a post
+ *              authorId:
+ *                type: string
+ *                example: 231311231321
+ *              slug:
+ *                type: string
+ *                example: hello-world
  *    responses:
  *      200:
  *        description: The post was updated
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Post'
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: success
+ *                data:
+ *                  $ref: '#/components/schemas/Post'
  *      404:
  *        description: The post was not found
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Post Not found
  *      500:
  *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
+ *      400:
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
+ *      401:
+ *        description: Unauthorized
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Unauthorized
  *
  *  delete:
  *    summary: Delete a post by id
@@ -136,20 +272,51 @@ const router = Router();
  *          type: string
  *        required: true
  *        description: Post id
- *        responses:
- *          200:
- *            description: The post was deleted
- *            content:
- *              application/json:
- *                schema:
+ *    responses:
+ *      200:
+ *        description: The post was deleted
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: success
+ *                data:
  *                  $ref: '#/components/schemas/Post'
- *          404:
- *            description: The post was not found
- *          500:
- *            description: Internal server error
  *
+ *      500:
+ *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
+ *      400:
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
  *
- *
+ *      401:
+ *        description: Unauthorized
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Unauthorized
  */
 
 router
