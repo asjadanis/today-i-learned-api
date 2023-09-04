@@ -24,7 +24,8 @@
     "prisma-push:dev": "dotenv -e .env.dev -- npx prisma db push",
     "prisma-push:stage": "dotenv -e .env.stage -- npx prisma db push",
     "prisma-push": "dotenv -e .env.prod -- npx prisma db push",
-    "knip": "knip"
+    "knip": "knip",
+    "prisma-docs": "npx prisma-docs-generator serve"
   },
   "lint-staged": {
     "src/**/*.{js,ts,mjs,cjs}": [
