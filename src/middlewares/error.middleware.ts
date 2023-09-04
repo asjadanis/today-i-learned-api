@@ -44,6 +44,8 @@ const errorHandler = (
     const statusCode = httpStatus.BAD_REQUEST;
     const message = "Bad Request, Validation failed.";
     error = new ApiError(message, statusCode);
+  } else if (err instanceof ApiError) {
+    error = new ApiError(err.message, err.statusCode);
   } else if (err instanceof Error) {
     const statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     const message = "Something went wrong!!!";
