@@ -45,7 +45,8 @@ const router = Router();
  *    security:
  *      - bearerAuth: []
  *    summary: Create a new post
- *    tags: [Posts]
+ *    tags:
+ *      - Posts
  *    requestBody:
  *      required: true
  *      content:
@@ -112,7 +113,8 @@ const router = Router();
  *
  *  get:
  *   summary: Get all posts
- *   tags: [Posts]
+ *   tags:
+ *      - Posts
  *   responses:
  *     200:
  *       description: The list of posts
@@ -134,7 +136,8 @@ const router = Router();
  * /posts/{id}:
  *  get:
  *    summary: Get a post by id
- *    tags: [Posts]
+ *    tags:
+ *      - Posts
  *    parameters:
  *      - in: path
  *        name: id
@@ -178,8 +181,11 @@ const router = Router();
  *                  example: Bad request
  *
  *  put:
+ *    security:
+ *      - bearerAuth: []
  *    summary: Update a post by id
- *    tags: [Posts]
+ *    tags:
+ *      - Posts
  *    parameters:
  *      - in: path
  *        name: id
@@ -261,8 +267,11 @@ const router = Router();
  *                  example: Unauthorized
  *
  *  delete:
+ *    security:
+ *      - bearerAuth: []
  *    summary: Delete a post by id
- *    tags: [Posts]
+ *    tags:
+ *      - Posts
  *    parameters:
  *      - in: path
  *        name: id
