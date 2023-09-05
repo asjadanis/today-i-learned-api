@@ -1,4 +1,8 @@
 import * as postController from "@/controllers/post.contoller";
+import {
+  getCommentFromPost,
+  addComment
+} from "@/controllers/comment.controller";
 import authMiddleware from "@/middlewares/auth.middleware";
 import { Router } from "express";
 
@@ -324,6 +328,109 @@ const router = Router();
  *                message:
  *                  type: string
  *                  example: Unauthorized
+ *
+ * /posts/{id}/comments:
+ *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    summary: Get all comments from a post
+ *    tags:
+ *      - Posts
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *          example: 231311231321
+ *        required: true
+ *        description: Post id
+ *    responses:
+ *      200:
+ *        description: The list of comments from a post
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: success
+ *                data:
+ *                  type: array
+ *                  items:
+ *                    $ref: '#/components/schemas/Comment'
+ *
+ *      500:
+ *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
+ *      400:
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
+ *
+ *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    summary: Add comment to a post
+ *    tags:
+ *      - Posts
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *          example: 231311231321
+ *        required: true
+ *        description: Post id
+ *    responses:
+ *      200:
+ *        description: Comment was added to a post
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: success
+ *                data:
+ *                  $ref: '#/components/schemas/Comment'
+ *
+ *      500:
+ *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Internal server error
+ *      400:
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: Bad request
+ *
+ *
  */
 
 router
@@ -336,5 +443,10 @@ router
   .get(postController.getPost)
   .put(authMiddleware, postController.updatePost)
   .delete(authMiddleware, postController.deletePost);
+
+router
+  .route("/:id/comments")
+  .get(getCommentFromPost)
+  .post(authMiddleware, addComment);
 
 export default router;
