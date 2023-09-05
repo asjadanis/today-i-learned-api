@@ -39,8 +39,6 @@ const router = Router();
 
 /**
  * @swagger
- * tags:
- * name: Posts
  * description: The posts managing API
  * /posts:
  *  post:
